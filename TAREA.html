@@ -5,10 +5,10 @@
 
         // MODELO
         var peliculas = [
-        {Titulo:"DOTA SANGRE DE DRAGON", img:"img/SERIE1.jpg",director:"Park So-young Kim Eui-jeong"},
-        {Titulo:"THE WALKING DEAD", img:"img/SERIE2.jpg",director:"Robert Kirkman Tony Moore"},
-        {Titulo:"CASTLEVANIA", img:"img/SERIE3.jpg",director:"Konami Corporation"},
-        {Titulo:"ONE PIECE", img:"img/SERIE4.jpg",director:" Eiichirō Oda"}
+        {video:"video/TRAILER1.mp4",Titulo:"DOTA SANGRE DE DRAGON", img:"img/SERIE1.jpg",director:"Park So-young Kim Eui-jeong"},
+        {video:"video/trailer2.mp4",Titulo:"THE WALKING DEAD", img:"img/SERIE2.jpg",director:"Robert Kirkman Tony Moore"},
+        {video:"video/trailer3.mp4",Titulo:"CASTLEVANIA", img:"img/SERIE3.jpg",director:"Konami Corporation"},
+        {video:"video/trailer4.mp4",Titulo:"ONE PIECE", img:"img/SERIE4.jpg",director:" Eiichirō Oda"}
         ];
 
         //VISTA
@@ -50,24 +50,25 @@
         //funcion para ver detalles
 
         function Detalles (pelis) {
-            var    i=0,   html = "";   
-            while(i < pelis.length) {
+              var peli=peliculas[pelis];
+          
               document.getElementById("main").innerHTML= `<div class="principal"> 
                 <div class="series">
-                <h3> ${pelis[i].Titulo}</h3>
-                  <h3> ${pelis[i].director}</h3>
-                  <button onclick="serie1()" id="ver" data-my-id="${i}">VER</button>
-                  <button onclick="actualizar(${i})">EDITAR</button>
-                  <button id="delete" data-my-id="${i}">BORRAR</button>
+                <h3>SERIE: ${peli.Titulo}</h3>
+                
+                  <h3>DERECTOR DE LA SERIE: ${peli.director}</h3>
+                  <video width="500" height="600" controls autoplay>
+                    <source src="${peli.video}" type="video/mp4">
+                      
+                   
+                   </video>
+                   <button onclick="cerrar()">Cerrar</button>
+                 
                 </div> 
             </div>
+            
                 
-                
-                
-                `;
-              i = i + 1;
-            };
-            return html + `<button id="new">Crear</button>`;
+                `
         };
 
         function newView () {
@@ -97,43 +98,33 @@
         };
 
         function actualizar(i){
-            var peli=peliculas[i];
+           
            document.getElementById("main").innerHTML= `
             <div class="ActualizarP">
                 <div class="ActualizarS">
                 <h3>ACTUALIZAR DATOS SERIE</h3>
-                <input type="texto"  placeholder="ingrese Nombre Serie" id="nombreA" value="${peli.Titulo}">
-                <input type="texto"  placeholder="ingrese Direcctor" id="directorA" value="${peli.director}">
-                <input type="texto"  placeholder="ingrese url de la imagen" id="imgA" value="${peli.img}">
-                <button onclick="Actualizacionss("${i}")" id="actualizarDatos" data-my-id="${i}">EDITAR</button>
+                <input type="texto"  placeholder="ingrese Nombre Serie" id="nombreA">
+                <input type="texto"  placeholder="ingrese Direcctor" id="directorA">
+                <input type="texto"  placeholder="ingrese url de la imagen" id="imgA">
+                <button onclick="Actualizacionss(${i})">EDITAR</button>
                 </div>
             </div>
             `
 
         }
         function Actualizacionss(pelis){
-            peliculas[pelis].Titulo=document.getElementById("nombreA").value;
-            peliculas[pelis].director=document.getElementById("directorA").value;
-            peliculas[pelis].img=document.getElementById("imgA").value;
+            peliculas.splice(pelis,1,{Titulo: document.getElementById("nombreA").value,
+            director: document.getElementById("directorA").value,
+            img:document.getElementById("imgA").value});
             indexContr();
         }
         function ActualizarN() { document.getElementById("main").innerHTML = actualizar(peliculas);}; 
-        function Actualizarser(i) {
-            peliculas.splice(i,1,{Titulo: document.getElementById("nombreA").value,
-            director: document.getElementById("directorA").value,
-            img:document.getElementById("imgA").value});
-            
-            indexContr();
-        };
-        
 
         // EVENTOS
         document.addEventListener('DOMContentLoaded', ev => indexContr());
         document.addEventListener('click', ev => {
             if      (ev.target.matches('#new'))    newContr();
             else if (ev.target.matches('#create')) createContr();
-            else if (ev.target.matches('#editar')) ActualizarN();
-            else if (ev.target.matches('#actualizarDatos')) Actualizarser(ev.target.dataset.myId);
             else if (ev.target.matches('#delete')) deleteContr(ev.target.dataset.myId);
         })
     </script>
