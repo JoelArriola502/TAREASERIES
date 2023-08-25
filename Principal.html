@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peliculas</title>
+    <link rel="stylesheet" href="./css/Principal.css">
+    <script type="text/javascript">
+        function ver(){
+            let video=document.getElementById("video");
+            video.addEventListener("dblclick", function(){source.src='./video/TRAILER1.mp4'});
+
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="principal">
+        <div class="logo">
+            <img class="logoP" src="./img/Logo.jpg" alt="Logo Netflix">
+
+        </div>
+        <div class="titulos">
+            <h1>DOTA
+                <img class="PeliculasE" src="./img/SERIE1.1.jpg" alt="Serie1">
+                <button onclick="Trailer()">TRAILER</button>
+                <button onclick="Serie1()">EDITAR</button>
+                <button>BORRAR</button>
+            </h1>
+            <h1>THE WALKING DEAD
+                <img class="PeliculasE" src="./img/SERIE2.jpg" alt="Serie1">
+                <button onclick="ver()">TRAILER</button>
+                <button onclick="Serie2()">EDITAR</button>
+                <button>BORRAR</button>
+            </h1>
+            <h1>CASTLEVANIA
+                <img class="PeliculasE" src="./img/SERIE3.jpg" alt="Serie1">
+                <button onclick="ver()">TRAILER</button>
+                <button onclick="Serie3()">EDITAR</button>
+                <button>BORRAR</button>
+            </h1>
+            <h1>ONE PIECE
+                <img class="PeliculasE" src="./img/SERIE4.jpg" alt="Serie1">
+                <button onclick="ver()">TRAILER</button>
+                <button onclick="Serie4()">EDITAR</button>
+                <button>BORRAR</button>
+            </h1>
+        </div>
+        <div id="main">
+        
+        </div>
+        <div id="Videos">
+            <video width="500" height="600" controls autoplay>
+             <source src="video/TRAILER1.mp4" type="video/mp4">
+               
+            
+            </video>
+            <button onclick="cerrar()">Cerrar</button>
+        </div>
+    </div>
+    <script src="./js/principal.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+.imgE{
+    width: 250px;
+    display: flex;
+    padding: 10px;
+}
+/* #main{
+    background-color: aqua;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+} */
+
+.imgs{
+    width: 350px;
+}
+body{
+    background-color: black;
+    color: #fff;
+    display: flex;
+    text-align: center;
+    place-items: center;
+}
+
+.primero{
+    display: flex;
+    flex-direction: column;
+}
+.logo{
+    width: 200px;
+}
+
+.imagenes{
+    width: 300px;
+    padding: 5PX;
+    margin: 5PX;
+
+}
+#main{
+    background-color: rgba(0, 0, 255, 0.21);
+    padding:25px;
+    margin: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
